@@ -1,4 +1,5 @@
 require("dotenv").config();
+const routes = require("./routes/routes");
 
 module.exports = {
   env: {
@@ -11,9 +12,19 @@ module.exports = {
     USER_FLOW: process.env.USER_FLOW,
   },
   trailingSlash: true,
-  exportPathMap: function () {
-    return {
+  exportPathMap: async function () {
+    const { locations } = routes;
+    const paths = {
       "/": { page: "/" },
     };
+
+    locations.forEach((location) => {
+      paths[`/${location.slug}`] = {
+        page: "/[path]",
+        query: { path: location.slug },
+      };
+    });
+
+    return paths;
   },
 };
