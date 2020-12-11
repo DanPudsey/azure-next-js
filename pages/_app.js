@@ -1,11 +1,14 @@
-import '../styles/reset.css';
-import '../styles/main.css';
+import '../styles/globals.css'
+import { Provider as AuthProvider } from 'next-auth/client'
 
-// This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
+  const { session } = pageProps
+  
   return (
-    <div>
-      <Component {...pageProps} />
-    </div>
-  );
+    <AuthProvider options={{ site: process.env.NEXTAUTH_URL }} session={session}>
+      <Component {...pageProps} />)
+    </AuthProvider>
+  )
 }
+
+export default MyApp

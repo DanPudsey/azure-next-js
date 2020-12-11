@@ -1,20 +1,13 @@
-const data = require("./utils/projectsData");
+require('dotenv').config()
 
 module.exports = {
-  trailingSlash: true,
-  exportPathMap: async function () {
-    const { projects } = data;
-    const paths = {
-      "/": { page: "/" },
-    };
-
-    projects.forEach((project) => {
-      paths[`/project/${project.slug}`] = {
-        page: "/project/[path]",
-        query: { path: project.slug },
-      };
-    });
-
-    return paths;
-  },
-};
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    AUTH_CLIENT_ID: process.env.AUTH_CLIENT_ID,
+    AUTH_CLIENT_SECRET: process.env.AUTH_CLIENT_SECRET,
+    AUTH_TENANT_NAME: process.env.AUTH_TENANT_NAME,
+    AUTH_TENANT_GUID: process.env.AUTH_TENANT_GUID,
+    JWT_SECRET: process.env.JWT_SECRET,
+    USER_FLOW: process.env.USER_FLOW,
+  }
+}
