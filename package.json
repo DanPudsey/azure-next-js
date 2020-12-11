@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && export",
+    "build": "next build && next export",
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.5.2",
     "next-auth": "^3.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "next": "^10.0.3"
   }
 }

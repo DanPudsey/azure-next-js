@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   env: {
@@ -9,5 +9,11 @@ module.exports = {
     AUTH_TENANT_GUID: process.env.AUTH_TENANT_GUID,
     JWT_SECRET: process.env.JWT_SECRET,
     USER_FLOW: process.env.USER_FLOW,
-  }
-}
+  },
+  trailingSlash: true,
+  exportPathMap: function () {
+    return {
+      "/": { page: "/" },
+    };
+  },
+};
