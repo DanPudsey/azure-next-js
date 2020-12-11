@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import { useSession } from 'next-auth/client'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { useSession } from "next-auth/client";
 
 export default function Home() {
-  const [session, loading] = useSession()
+  const [session, loading] = useSession();
 
   return (
     <div className={styles.container}>
@@ -18,11 +18,11 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        {session ?
+        {session ? (
           <>
             <div className={styles.grid}>
               <a href="https://nextjs.org/docs" className={styles.card}>
@@ -32,7 +32,9 @@ export default function Home() {
 
               <a href="https://nextjs.org/learn" className={styles.card}>
                 <h3>Learn &rarr;</h3>
-                <p>Learn about Next.js in an interactive course with quizzes!</p>
+                <p>
+                  Learn about Next.js in an interactive course with quizzes!
+                </p>
               </a>
 
               <a
@@ -49,25 +51,41 @@ export default function Home() {
               >
                 <h3>Deploy &rarr;</h3>
                 <p>
-                  Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+                  Instantly deploy your Next.js site to a public URL with
+                  Vercel.
+                </p>
               </a>
             </div>
             <div>
               <p>You are signed in! You can also sign out if you like.</p>
               <ul>
                 <li>
-                  <a style={{color: 'blue'}} href="/api/auth/signout/azureb2c">Sign Out (API)</a>
+                  <a
+                    style={{ color: "blue" }}
+                    href="/api/auth/signout/azureb2c"
+                  >
+                    Sign Out (API)
+                  </a>
                 </li>
                 <li>
-                  <a style={{color: 'blue'}} href={`https://${process.env.AUTH_TENANT_NAME}.b2clogin.com/${process.env.AUTH_TENANT_NAME}.onmicrosoft.com/${process.env.USER_FLOW}/oauth2/v2.0/logout?post_logout_redirect_uri=${process.env.NEXTAUTH_URL}/auth/signout`}>Sign Out (FULL)</a>
+                  <a
+                    style={{ color: "blue" }}
+                    href={`https://${process.env.AUTH_TENANT_NAME}.b2clogin.com/${process.env.AUTH_TENANT_NAME}.onmicrosoft.com/${process.env.USER_FLOW}/oauth2/v2.0/logout?post_logout_redirect_uri=${process.env.NEXTAUTH_URL}/auth/signout`}
+                  >
+                    Sign Out (FULL)
+                  </a>
                 </li>
               </ul>
             </div>
           </>
-          : <div>
-            You are not signed in! <a style={{color: 'blue'}} href="/api/auth/signin">You must sign in to access documentation!</a>
-        </div>}
+        ) : (
+          <div>
+            You are not signed in!{" "}
+            <a style={{ color: "blue" }} href="/api/auth/signin">
+              You must sign in to access documentation!
+            </a>
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>
@@ -76,10 +94,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
