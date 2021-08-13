@@ -13,6 +13,6 @@
     "react-dom": "16.13.1"
   },
   "devDependencies": {
-    "next": "^10.0.3"
+    "next": "^11.1.0"
   }
 }
